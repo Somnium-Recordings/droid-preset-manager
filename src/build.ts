@@ -34,23 +34,73 @@ const PATCH_CONFIG = {
     { potMode: 8, buttonLight: "L2.4" },
   ],
   cvs: [
-    { cvNumber: 1, pot: "P1.1", aPotMode: 1, bPotMode: 5 },
-    { cvNumber: 2, pot: "P2.1", aPotMode: 1, bPotMode: 5 },
-    { cvNumber: 3, pot: "P1.1", aPotMode: 2, bPotMode: 6 },
-    { cvNumber: 4, pot: "P2.1", aPotMode: 2, bPotMode: 6 },
-    { cvNumber: 5, pot: "P1.2", aPotMode: 1, bPotMode: 5 },
-    { cvNumber: 6, pot: "P2.2", aPotMode: 1, bPotMode: 5 },
-    { cvNumber: 7, pot: "P1.2", aPotMode: 2, bPotMode: 6 },
-    { cvNumber: 8, pot: "P2.2", aPotMode: 2, bPotMode: 6 },
-    { cvNumber: 9, pot: "P1.1", aPotMode: 3, bPotMode: 7 },
-    { cvNumber: 10, pot: "P2.1", aPotMode: 3, bPotMode: 7 },
-    { cvNumber: 11, pot: "P1.1", aPotMode: 4, bPotMode: 8 },
-    { cvNumber: 12, pot: "P2.1", aPotMode: 4, bPotMode: 8 },
-    { cvNumber: 13, pot: "P1.2", aPotMode: 3, bPotMode: 7 },
-    { cvNumber: 14, pot: "P2.2", aPotMode: 3, bPotMode: 7 },
-    { cvNumber: 15, pot: "P1.2", aPotMode: 4, bPotMode: 8 },
-    { cvNumber: 16, pot: "P2.2", aPotMode: 4, bPotMode: 8 },
-  ],
+    // Droid CV -> Midi -> FH-* -> CV
+    {
+      label: "Unused",
+      cvNumber: 1, defaultA: 0,
+      pot: "P1.1", aPotMode: 1, bPotMode: 5, },
+    {
+      label: "Unused",
+      cvNumber: 2, defaultA: 0,
+      pot: "P2.1", aPotMode: 1, bPotMode: 5, },
+    {
+      label: "Unused",
+      cvNumber: 3, defaultA: 0,
+      pot: "P1.1", aPotMode: 2, bPotMode: 6, },
+    {
+      label: "Unused",
+      cvNumber: 4, defaultA: 0,
+      pot: "P2.1", aPotMode: 2, bPotMode: 6, },
+    {
+      label: "Unused",
+      cvNumber: 5, defaultA: 0,
+      pot: "P1.2", aPotMode: 1, bPotMode: 5, },
+    {
+      label: "Unused",
+      cvNumber: 6, defaultA: 0,
+      pot: "P2.2", aPotMode: 1, bPotMode: 5, },
+    {
+      label: "Unused",
+      cvNumber: 7, defaultA: 0,
+      pot: "P1.2", aPotMode: 2, bPotMode: 6, },
+    {
+      label: "Unused",
+      cvNumber: 8, defaultA: 0,
+      pot: "P2.2", aPotMode: 2, bPotMode: 6, },
+    // Droid CV -> CV
+    {
+      label: "Timi: Param 1",
+      cvNumber: 9, defaultA: 0, voltage: 10,
+      pot: "P1.1", aPotMode: 3, bPotMode: 7, },
+    {
+      label: "Timi: Param 2",
+      cvNumber: 10, defaultA: 0, voltage: 10,
+      pot: "P2.1", aPotMode: 3, bPotMode: 7, },
+    {
+      label: "Timi: Param 3",
+      cvNumber: 11, defaultA: 0, voltage: 10,
+      pot: "P1.1", aPotMode: 4, bPotMode: 8, },
+    {
+      label: "Timi: Mix",
+      cvNumber: 12, defaultA: 0, voltage: 10,
+      pot: "P2.1", aPotMode: 4, bPotMode: 8, },
+    {
+      label: "Timi: Scan",
+      cvNumber: 13, defaultA: 0, voltage: 7,
+      pot: "P1.2", aPotMode: 3, bPotMode: 7, },
+    {
+      label: "Versio Blend",
+      cvNumber: 14, defaultA: 0, voltage: 5,
+      pot: "P2.2", aPotMode: 3, bPotMode: 7, },
+    {
+      label: "Kick VCA",
+      cvNumber: 15, defaultA: 1, voltage: 5,
+      pot: "P1.2", aPotMode: 4, bPotMode: 8, },
+    {
+      label: "Filter Freq",
+      cvNumber: 16, defaultA: 0, voltage: 5,
+      pot: "P2.2", aPotMode: 4, bPotMode: 8, },
+  ], // prettier-ignore
 };
 
 Handlebars.registerHelper({
