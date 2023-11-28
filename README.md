@@ -11,7 +11,9 @@ This patch currently expects the following modules:
   - We're currently using the Expert Sleepers FH-2, but most options will work
   - Patch sends out CCs on CH16 CC 1-8
 
-## Usage
+![Manual](./docs/Manual.png)
+
+## Development
 
 ### First Time Setup
 
