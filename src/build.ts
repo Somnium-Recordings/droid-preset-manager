@@ -67,6 +67,19 @@ Handlebars.registerHelper({
     return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
   },
   cvName: (cvNumber) => `CV${cvNumber}`,
+  // Function to do basic mathematical operation in handlebar
+  math: function (lvalue, operator: "+" | "-" | "*" | "/" | "%", rvalue) {
+    lvalue = parseFloat(lvalue);
+    rvalue = parseFloat(rvalue);
+
+    return {
+      "+": lvalue + rvalue,
+      "-": lvalue - rvalue,
+      "*": lvalue * rvalue,
+      "/": lvalue / rvalue,
+      "%": lvalue % rvalue,
+    }[operator];
+  },
 });
 
 async function run() {
