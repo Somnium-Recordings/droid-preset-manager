@@ -98,7 +98,7 @@ const PATCH_CONFIG = {
       pot: "P1.2", aPotMode: 4, bPotMode: 8, },
     {
       label: "Filter Freq",
-      cvNumber: 16, defaultA: 0, voltage: 5,
+      cvNumber: 16, defaultA: 0, voltage: 10,
       pot: "P2.2", aPotMode: 4, bPotMode: 8, },
   ], // prettier-ignore
 };
