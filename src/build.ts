@@ -36,19 +36,19 @@ const PATCH_CONFIG = {
   cvs: [
     // Droid CV -> Midi -> FH-* -> CV
     {
-      label: "Unused",
+      label: "Timi: Param 1",
       cvNumber: 1, defaultA: 0,
       pot: "P1.1", aPotMode: 1, bPotMode: 5, },
     {
-      label: "Unused",
+      label: "Timi: Param 2",
       cvNumber: 2, defaultA: 0,
       pot: "P2.1", aPotMode: 1, bPotMode: 5, },
     {
-      label: "Unused",
+      label: "Timi: Param 3",
       cvNumber: 3, defaultA: 0,
       pot: "P1.1", aPotMode: 2, bPotMode: 6, },
     {
-      label: "Unused",
+      label: "Timi: Mix",
       cvNumber: 4, defaultA: 0,
       pot: "P2.1", aPotMode: 2, bPotMode: 6, },
     {
@@ -69,19 +69,19 @@ const PATCH_CONFIG = {
       pot: "P2.2", aPotMode: 2, bPotMode: 6, },
     // Droid CV -> CV
     {
-      label: "Timi: Param 1",
+      label: "Unused",
       cvNumber: 9, defaultA: 0, voltage: 10,
       pot: "P1.1", aPotMode: 3, bPotMode: 7, },
     {
-      label: "Timi: Param 2",
+      label: "Unused",
       cvNumber: 10, defaultA: 0, voltage: 10,
       pot: "P2.1", aPotMode: 3, bPotMode: 7, },
     {
-      label: "Timi: Param 3",
+      label: "Unused",
       cvNumber: 11, defaultA: 0, voltage: 10,
       pot: "P1.1", aPotMode: 4, bPotMode: 8, },
     {
-      label: "Timi: Mix",
+      label: "Unused",
       cvNumber: 12, defaultA: 0, voltage: 10,
       pot: "P2.1", aPotMode: 4, bPotMode: 8, },
     {
@@ -94,7 +94,7 @@ const PATCH_CONFIG = {
       pot: "P2.2", aPotMode: 3, bPotMode: 7, },
     {
       label: "Kick VCA",
-      cvNumber: 15, defaultA: 1, voltage: 5,
+      cvNumber: 15, defaultA: 1, voltage: 5,  gatedXFade: true,
       pot: "P1.2", aPotMode: 4, bPotMode: 8, },
     {
       label: "Filter Freq",
