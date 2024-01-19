@@ -73,9 +73,12 @@ const PATCH_CONFIG = {
       cvNumber: 9, defaultA: 0, voltage: 10,
       pot: "P1.1", aPotMode: 3, bPotMode: 7, },
     {
-      label: "Unused",
-      cvNumber: 10, defaultA: 0, voltage: 10,
-      pot: "P2.1", aPotMode: 3, bPotMode: 7, },
+      label: "Versio Freq",
+      cvNumber: 10, defaultA: 0, voltage: 5,
+      pot: "P2.1", aPotMode: 3, bPotMode: 7,
+      crossfaders: [
+        {preset: 15, name: 'CROSSFADE_DOWN_50'},
+      ]},
     {
       label: "Unused",
       cvNumber: 11, defaultA: 0, voltage: 10,
@@ -94,13 +97,36 @@ const PATCH_CONFIG = {
       pot: "P2.2", aPotMode: 3, bPotMode: 7, },
     {
       label: "Kick VCA",
-      cvNumber: 15, defaultA: 1, voltage: 5,  gatedXFade: true,
+      cvNumber: 15, defaultA: 1, voltage: 5, 
+      crossfaders: 'CROSSFADE_GATED',
       pot: "P1.2", aPotMode: 4, bPotMode: 8, },
     {
       label: "Filter Freq",
-      cvNumber: 16, defaultA: 0, voltage: 10,
-      pot: "P2.2", aPotMode: 4, bPotMode: 8, },
-  ], // prettier-ignore
+      cvNumber: 16, defaultA: 0, voltage: 5,
+      pot: "P2.2", aPotMode: 4, bPotMode: 8, 
+      crossfaders: [
+        {preset: 5, name: 'CROSSFADE_DOWN_100'},
+      ]},
+  ] // prettier-ignore
+    .map(({ crossfaders, ...cvConfig }) => {
+      const presetCrossfaders = Array(15).fill(
+        typeof crossfaders === "string" ? crossfaders : "CROSSFADE"
+      );
+
+      if (Array.isArray(crossfaders)) {
+        crossfaders.forEach(({ preset, name }) => {
+          presetCrossfaders[preset - 1] = name;
+        });
+      }
+
+      return {
+        ...cvConfig,
+        presetCrossfaders: presetCrossfaders.map((crossfader, index) => ({
+          inputName: `input${index + 1}`,
+          crossfaderName: `_${crossfader}`,
+        })),
+      };
+    }),
 };
 
 Handlebars.registerHelper({
