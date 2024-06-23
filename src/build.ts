@@ -97,8 +97,9 @@ const PATCH_CONFIG = {
       pot: "P2.2", aPotMode: 3, bPotMode: 7, },
     {
       label: "Kick VCA",
-      cvNumber: 15, defaultA: 1, voltage: 5, 
+      cvNumber: 15, defaultA: 1, voltage: 10, 
       crossfaders: 'CROSSFADE_GATED',
+      scaleBy: 'KICK_LEVEL', colorMax: 0.4, // green
       pot: "P1.2", aPotMode: 4, bPotMode: 8, },
     {
       label: "Filter Freq",
