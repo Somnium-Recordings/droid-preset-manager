@@ -68,38 +68,39 @@ const PATCH_CONFIG = {
       cvNumber: 8, defaultA: 0,
       pot: "P2.2", aPotMode: 2, bPotMode: 6, },
     // Droid CV -> CV
+    // {
+    //   label: "Unused",
+    //   cvNumber: 9, defaultA: 0, voltage: 10,
+    //   pot: "P1.1", aPotMode: 3, bPotMode: 7, },
+    // {
+    //   label: "Versio Freq",
+    //   cvNumber: 10, defaultA: 0, voltage: 5,
+    //   pot: "P2.1", aPotMode: 3, bPotMode: 7,
+    //   crossfaders: [
+    //     {preset: 15, name: 'CROSSFADE_DOWN_50'},
+    //   ]},
+    // {
+    //   label: "Unused",
+    //   cvNumber: 11, defaultA: 0, voltage: 10,
+    //   pot: "P1.1", aPotMode: 4, bPotMode: 8, },
+    // {
+    //   label: "Unused",
+    //   cvNumber: 12, defaultA: 0, voltage: 10,
+    //   pot: "P2.1", aPotMode: 4, bPotMode: 8, },
     {
-      label: "Unused",
-      cvNumber: 9, defaultA: 0, voltage: 10,
-      pot: "P1.1", aPotMode: 3, bPotMode: 7, },
-    {
-      label: "Versio Freq",
-      cvNumber: 10, defaultA: 0, voltage: 5,
-      pot: "P2.1", aPotMode: 3, bPotMode: 7,
-      crossfaders: [
-        {preset: 15, name: 'CROSSFADE_DOWN_50'},
-      ]},
-    {
-      label: "Unused",
-      cvNumber: 11, defaultA: 0, voltage: 10,
-      pot: "P1.1", aPotMode: 4, bPotMode: 8, },
-    {
-      label: "Unused",
-      cvNumber: 12, defaultA: 0, voltage: 10,
-      pot: "P2.1", aPotMode: 4, bPotMode: 8, },
-    {
-      label: "Timi: Scan",
+      label: "Bus VCA",
       cvNumber: 13, defaultA: 0, voltage: 7,
       pot: "P1.2", aPotMode: 3, bPotMode: 7, },
     {
-      label: "Versio Blend",
+      label: "Bus Aux 1",
       cvNumber: 14, defaultA: 0, voltage: 5,
       pot: "P2.2", aPotMode: 3, bPotMode: 7, },
     {
       label: "Kick VCA",
       cvNumber: 15, defaultA: 1, voltage: 10, 
+      cloneCvTo: [11],
       crossfaders: 'CROSSFADE_GATED',
-      scaleBy: 'KICK_LEVEL', colorMax: 0.4, // green
+      // scaleBy: 'KICK_LEVEL', colorMax: 0.4, // green
       pot: "P1.2", aPotMode: 4, bPotMode: 8, },
     {
       label: "Filter Freq",
@@ -159,12 +160,17 @@ Handlebars.registerHelper({
   },
 });
 
+function preprocessTemplate(template: string) {
+  // Replace ; ini comments with droid compatible "#"
+  return template.replace(/;/g, "#");
+}
+
 async function run() {
   const templatesPaths = await readdir(TEMPLATE_DIR);
   const templatesContents = await Promise.all(
     templatesPaths.map(async (templateFile) =>
       readFile(path.join(TEMPLATE_DIR, templateFile), "utf8").then(
-        (contents) => [templateFile, contents]
+        (contents) => [templateFile, preprocessTemplate(contents)]
       )
     )
   );
