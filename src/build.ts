@@ -90,7 +90,10 @@ const PATCH_CONFIG = {
     {
       label: "Bus VCA",
       cvNumber: 13, defaultA: 0, voltage: 7,
-      pot: "P1.2", aPotMode: 3, bPotMode: 7, },
+      pot: "P1.2", aPotMode: 3, bPotMode: 7,
+      crossfaders: [
+        {preset: 5, name: 'CROSSFADE_HOLD_100'},
+      ]},
     {
       label: "Bus Aux 1",
       cvNumber: 14, defaultA: 0, voltage: 5,
